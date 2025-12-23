@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BrainLink Competition 2025</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<style>
+/* ================= GLOBAL ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #242F49, #1B1E2F);
+  color: #fff;
+  overflow-x: hidden;
+}
+section {
+  padding: 100px 8%;
+}
+h1, h2, h3 {
+  font-weight: 700;
+}
+p {
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+/* ================= NAV ================= */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(27,30,47,0.6);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+}
+nav a {
+  color: #fff;
+  margin-left: 30px;
+  text-decoration: none;
+  font-weight: 500;
+}
+nav .cta {
+  background: linear-gradient(135deg, #FF4E45, #FFA586);
+  padding: 10px 22px;
+  border-radius: 30px;
+}
+
+/* ================= HERO ================= */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  position: relative;
+}
+.hero h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+.hero span {
+  color: #FFA586;
+}
+.hero button {
+  margin-top: 30px;
+  background: linear-gradient(135deg, #FF4E45, #FFA586);
+  border: none;
+  color: #fff;
+  padding: 18px 40px;
+  border-radius: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(255,78,69,0.3);
+}
+.hero canvas {
+  width: 100%;
+  height: 450px;
+}
+
+/* ================= GLASS CARDS ================= */
+.glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+/* ================= ABOUT ================= */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+.about-grid i {
+  font-size: 40px;
+  color: #FFA586;
+}
+
+/* ================= PARTNER ================= */
+.partner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.partner img {
+  max-width: 260px;
+}
+
+/* ================= STRUCTURE ================= */
+.structure {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+.phase {
+  width: 280px;
+  text-align: center;
+}
+
+/* ================= TIMELINE ================= */
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(#FF4E45, #FFA586);
+}
+.event {
+  width: 45%;
+  padding: 25px;
+  margin-bottom: 40px;
+}
+.event.left { margin-left: 0; }
+.event.right { margin-left: auto; }
+.event h4 { color: #FFA586; }
+
+/* ================= BENEFITS ================= */
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 30px;
+}
+
+/* ================= CTA ================= */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(135deg, #FF4E45, #FFA586);
+  border-radius: 40px;
+  padding: 80px 40px;
+}
+.cta-section h2 {
+  color: #1B1E2F;
+}
+.cta-section button {
+  background: #1B1E2F;
+  color: #fff;
+  border: none;
+  padding: 18px 45px;
+  border-radius: 40px;
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+/* ================= FAQ ================= */
+details {
+  margin-bottom: 20px;
+}
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  padding: 60px 8%;
+  background: #141627;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 30px;
+}
+footer a {
+  color: #d1d5db;
+  text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h3>BrainLink</h3>
+  <div>
+    <a href="#about">About</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#partners">Partners</a>
+    <a href="#register" class="cta">Register</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>BrainLink Competition <span>2025</span></h1>
+    <p>Where Innovation Meets Opportunity — connecting Business & Engineering students with real-world industry challenges.</p>
+    <button>Join the Competition</button>
+  </div>
+  <canvas id="three-canvas"></canvas>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About the Competition</h2><br>
+  <div class="about-grid">
+    <div class="glass">
+      <i class='bx bx-group'></i>
+      <h3>Cross-disciplinary Teams</h3>
+      <p>Business & Engineering students collaborate together.</p>
+    </div>
+    <div class="glass">
+      <i class='bx bx-buildings'></i>
+      <h3>Real Company Challenges</h3>
+      <p>Work on real innovation problems from industry.</p>
+    </div>
+    <div class="glass">
+      <i class='bx bx-bulb'></i>
+      <h3>Innovation Focus</h3>
+      <p>Creativity, feasibility, and impact.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER -->
+<section id="partners" class="partner">
+  <div>
+    <h2>Industry Partner</h2>
+    <p>Henkel Algeria supports BrainLink by providing real innovation challenges and expert mentorship.</p>
+  </div>
+  <img src="assets/henkel-logo.png" alt="Henkel Algeria">
+</section>
+
+<!-- STRUCTURE -->
+<section>
+  <h2>Competition Structure</h2><br>
+  <div class="structure">
+    <div class="glass phase">
+      <h3>Phase 1</h3>
+      <p>Semifinals — Solution submission & evaluation.</p>
+    </div>
+    <div class="glass phase">
+      <h3>Phase 2</h3>
+      <p>Finals — Live pitching & jury evaluation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <h2>Competition Timeline</h2><br>
+  <div class="timeline">
+    <div class="glass event left">
+      <h4>Registration Deadline</h4>
+      <p>Teams finalize their registration.</p>
+    </div>
+    <div class="glass event right">
+      <h4>Semifinal Submission</h4>
+      <p>Submit project solutions.</p>
+    </div>
+    <div class="glass event left">
+      <h4>Final Round</h4>
+      <p>Pitch to industry jury.</p>
+    </div>
+    <div class="glass event right">
+      <h4>Winner Announcement</h4>
+      <p>Celebrate innovation!</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section>
+  <h2>Why Participate?</h2><br>
+  <div class="benefits">
+    <div class="glass">Real Industry Experience</div>
+    <div class="glass">Professional Mentorship</div>
+    <div class="glass">Networking Opportunities</div>
+    <div class="glass">Career Visibility</div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="register" class="cta-section">
+  <h2>Register Your Team Now</h2>
+  <p>Limited spots available — don’t miss the opportunity.</p>
+  <button>Register Now</button>
+</section>
+
+<!-- FAQ -->
+<section>
+  <h2>FAQ</h2><br>
+  <details class="glass">
+    <summary>Who can participate?</summary>
+    <p>Business and Engineering students from universities.</p>
+  </details>
+  <details class="glass">
+    <summary>Is the competition in English?</summary>
+    <p>Yes, all phases are conducted in English.</p>
+  </details>
+</section>
+
+<footer>
+  <div>
+    <h3>BrainLink</h3>
+    <p>Innovation through collaboration.</p>
+  </div>
+  <div>
+    <a href="#">Instagram</a><br>
+    <a href="#">LinkedIn</a>
+  </div>
+  <div>
+    <p>© 2025 BrainLink Competition</p>
+  </div>
+</footer>
+
+<script>
+/* ================= THREE.JS FLOATING SHAPES ================= */
+const canvas = document.getElementById('three-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+const geometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
+const material = new THREE.MeshStandardMaterial({ color: 0xFFA586 });
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
+
+const light = new THREE.PointLight(0xffffff, 1);
+light.position.set(5,5,5);
+scene.add(light);
+
+camera.position.z = 4;
+
+function animate() {
+  requestAnimationFrame(animate);
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+animate();
+</script>
+
+</body>
+</html>
